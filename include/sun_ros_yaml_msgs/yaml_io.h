@@ -7,7 +7,7 @@
 namespace YAML {
 
 template <typename T>
-void saveOnFile(const std::string &file, T resource,
+void saveOnFile(const std::string &file, const T &resource,
                 const std::string &root_yaml_node = "") {
   YAML::Node out_yaml;
   if (root_yaml_node == "" || root_yaml_node.empty()) {
@@ -33,9 +33,10 @@ T loadFromFile(const std::string &file,
     } else {
       return db_yaml[root_yaml_node].as<T>();
     }
-  } catch (const YAML::Exception &e) { 
-      std::cerr << "YAML::loadFromFile error [" + file + "](/" + root_yaml_node + ")\n";
-      throw;
+  } catch (const YAML::Exception &e) {
+    std::cerr << "YAML::loadFromFile error [" + file + "](/" + root_yaml_node +
+                     ")\n";
+    throw;
   }
 }
 
