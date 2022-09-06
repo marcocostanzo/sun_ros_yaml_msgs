@@ -40,8 +40,8 @@ template <> struct convert<geometry_msgs::Point> {
       point.z = node["z"].as<double>();
     } else {
       point.x = node[0].as<double>();
-      point.x = node[1].as<double>();
-      point.x = node[2].as<double>();
+      point.y = node[1].as<double>();
+      point.z = node[2].as<double>();
     }
     return true;
   }
